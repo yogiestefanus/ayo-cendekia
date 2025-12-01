@@ -13,7 +13,8 @@ import {
   Mail, 
   Award,
   BookOpen,
-  Globe
+  Globe,
+  MessageCircle // Menambahkan ikon pesan untuk WhatsApp
 } from 'lucide-react';
 
 const App = () => {
@@ -44,7 +45,6 @@ const App = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
         <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('home')}>
-            {/* Logo Placeholder based on description */}
             <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-amber-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
               A
             </div>
@@ -91,7 +91,7 @@ const App = () => {
       {/* Hero Section */}
       <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-blue-900/90 z-0">
-            {/* Abstract Background pattern simulating "Nusantara" islands/network */}
+            {/* Abstract Background pattern */}
             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
         
@@ -332,7 +332,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Pricing/Packages Preview */}
+      {/* Pricing Section (Optional) */}
       <section className="py-20 bg-slate-100">
         <div className="container mx-auto px-4 md:px-8">
            <div className="text-center mb-12">
@@ -388,7 +388,7 @@ const App = () => {
             <div>
               <h2 className="text-blue-900 font-bold text-3xl mb-6">Mulai Kolaborasi</h2>
               <p className="text-slate-600 mb-8">
-                Kami siap berdiskusi lebih lanjut mengenai kebutuhan spesifik organisasi Anda. Hubungi kami untuk jadwal presentasi atau penawaran khusus.
+                Kami siap berdiskusi lebih lanjut mengenai kebutuhan spesifik organisasi Anda. Hubungi kami melalui WhatsApp atau Email untuk respon cepat.
               </p>
               
               <div className="space-y-6">
@@ -399,8 +399,8 @@ const App = () => {
                   <div>
                     <h4 className="font-bold text-blue-900">Kantor Pusat</h4>
                     <p className="text-slate-600 text-sm">
-                      Jl. Sentosa Gg. I No.17, Sungai Keledang,<br />
-                      Kec. Samarinda Seberang, Kalimantan Timur 75131
+                      Jl. Kruing 2 B3 No. 161, Lempake,<br />
+                      Samarinda Utara, Kalimantan Timur 75113
                     </p>
                   </div>
                 </div>
@@ -411,7 +411,7 @@ const App = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-blue-900">Telepon / WhatsApp</h4>
-                    <p className="text-slate-600 text-sm">0851-6366-9852 / 0822-5205-624</p>
+                    <p className="text-slate-600 text-sm">0851-6366-9852 (Yogie) / 0822-5205-624 (Ameylia)</p>
                   </div>
                 </div>
 
@@ -427,24 +427,47 @@ const App = () => {
               </div>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-xl shadow-lg">
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
-                  <input type="text" className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Nama Anda" />
+            <div className="bg-slate-50 p-8 rounded-xl shadow-lg border-t-4 border-blue-900 flex flex-col justify-center">
+              <h3 className="text-xl font-bold text-blue-900 mb-6 text-center">Hubungi Kami Sekarang</h3>
+              
+              <div className="space-y-4">
+                {/* Tombol WA Yogie */}
+                <a 
+                  href="https://wa.me/6285163669852" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-lg transition-colors shadow-md group"
+                >
+                  <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+                  Chat WhatsApp Yogie
+                </a>
+
+                {/* Tombol WA Ameylia */}
+                <a 
+                  href="https://wa.me/628225205624" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-lg transition-colors shadow-md group"
+                >
+                  <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+                  Chat WhatsApp Ameylia
+                </a>
+
+                <div className="relative flex py-2 items-center">
+                    <div className="flex-grow border-t border-slate-300"></div>
+                    <span className="flex-shrink mx-4 text-slate-400 text-sm">ATAU</span>
+                    <div className="flex-grow border-t border-slate-300"></div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Instansi / Perusahaan</label>
-                  <input type="text" className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Nama Perusahaan" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Pesan / Kebutuhan</label>
-                  <textarea rows="4" className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Ceritakan kebutuhan Anda..."></textarea>
-                </div>
-                <button className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-lg transition-colors shadow-lg">
-                  Kirim Pesan
-                </button>
-              </form>
+
+                {/* Tombol Email */}
+                <a 
+                  href="mailto:ayocendekianusantara@gmail.com"
+                  className="flex items-center justify-center gap-3 w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 rounded-lg transition-colors shadow-md group"
+                >
+                  <Mail size={24} className="group-hover:scale-110 transition-transform" />
+                  Kirim Email Resmi
+                </a>
+              </div>
             </div>
           </div>
         </div>
