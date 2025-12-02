@@ -14,8 +14,13 @@ import {
   Award,
   BookOpen,
   Globe,
-  MessageCircle // Menambahkan ikon pesan untuk WhatsApp
+  MessageCircle
 } from 'lucide-react';
+
+// --- PERUBAHAN 1: Import Logo ---
+// Pastikan nama file di folder assets sesuai, misalnya 'logo-acn.png' atau 'logo.png'
+// Jika nama file Anda beda, ganti bagian './assets/logo-acn.png'
+import logoACN from './assets/logo-acn.png'; 
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,10 +49,16 @@ const App = () => {
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
         <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-amber-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              A
-            </div>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
+            
+            {/* --- PERUBAHAN 2: Ganti Logo Placeholder dengan Gambar --- */}
+            {/* Logo Image */}
+            <img 
+              src={logoACN} 
+              alt="Logo Ayo Cendekia Nusantara" 
+              className="h-10 w-auto object-contain" // h-10 mengatur tinggi logo, w-auto menjaga proporsi
+            />
+
             <div className={`font-bold text-xl md:text-2xl ${scrolled ? 'text-blue-900' : 'text-blue-900 md:text-white'} transition-colors`}>
               AYO Cendekia <span className="text-amber-500">Nusantara</span>
             </div>
