@@ -422,7 +422,7 @@ const App = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-blue-900">Telepon / WhatsApp</h4>
-                    <p className="text-slate-600 text-sm">0851-6366-9852 (Yogie) / 0822-5205-624 (Ameylia)</p>
+                    <p className="text-slate-600 text-sm">0851-6366-9852 (Ameylia) / 0822-5205-624 (Yogie)</p>
                   </div>
                 </div>
 
@@ -444,7 +444,7 @@ const App = () => {
               <div className="space-y-4">
                 {/* Tombol WA Yogie */}
                 <a 
-                  href="https://wa.me/6285163669852" 
+                  href="https://wa.me/628225205624" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-lg transition-colors shadow-md group"
@@ -455,7 +455,7 @@ const App = () => {
 
                 {/* Tombol WA Ameylia */}
                 <a 
-                  href="https://wa.me/628225205624" 
+                  href="https://wa.me/6285163669852" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-lg transition-colors shadow-md group"
