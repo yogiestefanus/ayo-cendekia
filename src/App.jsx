@@ -17,10 +17,10 @@ import {
   MessageCircle
 } from 'lucide-react';
 
-// --- PERUBAHAN 1: Import Logo ---
-// Pastikan nama file di folder assets sesuai, misalnya 'logo-acn.png' atau 'logo.png'
-// Jika nama file Anda beda, ganti bagian './assets/logo-acn.png'
-import logoACN from './assets/logo-acn.png'; 
+// --- IMPORT GAMBAR ---
+import logoACN from './assets/logo-acn.png';
+// Pastikan file gedung.png sudah ada di folder src/assets
+import gedungImg from './assets/gedung.png'; 
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,12 +51,11 @@ const App = () => {
         <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
             
-            {/* --- PERUBAHAN 2: Ganti Logo Placeholder dengan Gambar --- */}
             {/* Logo Image */}
             <img 
               src={logoACN} 
               alt="Logo Ayo Cendekia Nusantara" 
-              className="h-10 w-auto object-contain" // h-10 mengatur tinggi logo, w-auto menjaga proporsi
+              className="h-10 w-auto object-contain"
             />
 
             <div className={`font-bold text-xl md:text-2xl ${scrolled ? 'text-blue-900' : 'text-blue-900 md:text-white'} transition-colors`}>
@@ -99,36 +98,65 @@ const App = () => {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900/90 z-0">
-            {/* Abstract Background pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+      {/* Hero Section (FULL SCREEN & SEAMLESS) */}
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-blue-900 pt-20">
+        
+        {/* 1. Background Pattern (Tetap ada di paling belakang) */}
+        <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+
+        {/* 2. GAMBAR GEDUNG (Posisi Absolute Full Kanan) */}
+        <div className="absolute top-0 right-0 w-full md:w-[60%] h-full z-0">
+            {/* Gambar Gedung */}
+            <img 
+              src={gedungImg} 
+              alt="Gedung Pusat" 
+              className="w-full h-full object-cover object-right md:object-center opacity-60 md:opacity-100"
+            />
+            
+            {/* Layer Gradasi Biru (Rahasia agar seamless ke kiri) */}
+            {/* Ini membuat gambar perlahan menghilang saat menuju ke arah teks di kiri */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/60 to-transparent"></div>
+            
+            {/* Layer Gradasi Bawah (Agar seamless ke section berikutnya) */}
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-900 to-transparent"></div>
         </div>
         
-        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
-          <div className="inline-block bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-1 mb-6">
-            <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Terdaftar Resmi: AHU-005313.AH.01.31.2025</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Bergerak, Bertumbuh, <br /> & Berkolaborasi
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">
-            Mitra strategis Anda dalam konsultasi CSR, transformasi teknologi, pengembangan SDM, dan layanan kreatif berbasis riset dan inovasi.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            <button 
-              onClick={() => scrollToSection('layanan')}
-              className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-bold transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-            >
-              Layanan Kami <ChevronRight size={20} />
-            </button>
-            <button 
-              onClick={() => scrollToSection('kontak')}
-              className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-bold transition-all"
-            >
-              Hubungi Kami
-            </button>
+        {/* 3. KONTEN TEKS (Relative agar di atas gambar) */}
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row items-center h-full">
+            
+            {/* Text Area (Dibatasi lebarnya agar tidak menabrak gambar di desktop) */}
+            <div className="w-full md:w-1/2 text-left animate-fade-in-up py-12 md:py-0">
+              <div className="inline-block bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-1 mb-6 backdrop-blur-sm">
+                <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Terdaftar Resmi: AHU-005313.AH.01.31.2025</span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+                Bergerak, Bertumbuh, <br /> & Berkolaborasi
+              </h1>
+              
+              <p className="text-lg text-slate-200 mb-8 max-w-lg leading-relaxed drop-shadow-sm">
+                Mitra strategis Anda dalam konsultasi CSR, transformasi teknologi, pengembangan SDM, dan layanan kreatif berbasis riset dan inovasi.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <button 
+                  onClick={() => scrollToSection('layanan')}
+                  className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+                >
+                  Layanan Kami <ChevronRight size={20} />
+                </button>
+                <button 
+                  onClick={() => scrollToSection('kontak')}
+                  className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 px-8 py-4 rounded-lg font-bold transition-all backdrop-blur-sm"
+                >
+                  Hubungi Kami
+                </button>
+              </div>
+            </div>
+
+            {/* Area Kanan Kosong (Karena sudah diisi gambar background) */}
+            <div className="w-full md:w-1/2"></div>
           </div>
         </div>
       </section>
