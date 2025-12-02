@@ -21,6 +21,9 @@ import {
 import logoACN from './assets/logo-acn.png';
 // Pastikan file gedung.png sudah ada di folder src/assets
 import gedungImg from './assets/gedung.png'; 
+// Import Foto Tim
+import fotoYogie from './assets/foto-yogie.png';
+import fotoAmeylia from './assets/foto-ameylia.png';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -333,8 +336,14 @@ const App = () => {
             {/* Team Member 1 */}
             <div className="bg-slate-50 rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row">
               <div className="md:w-1/3 bg-slate-200 flex items-center justify-center p-6">
-                 {/* Avatar Placeholder */}
-                 <div className="w-24 h-24 rounded-full bg-blue-900 flex items-center justify-center text-white text-3xl font-bold">YS</div>
+                 {/* FOTO YOGIE */}
+                 <div className="w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden">
+                   <img 
+                     src={fotoYogie} 
+                     alt="Yogie Stefanus" 
+                     className="w-full h-full object-cover"
+                   />
+                 </div>
               </div>
               <div className="p-6 md:w-2/3">
                 <h3 className="font-bold text-xl text-blue-900">Yogie Stefanus, S.Fil., M.Pd.</h3>
@@ -352,8 +361,14 @@ const App = () => {
             {/* Team Member 2 */}
             <div className="bg-slate-50 rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row">
               <div className="md:w-1/3 bg-slate-200 flex items-center justify-center p-6">
-                 {/* Avatar Placeholder */}
-                 <div className="w-24 h-24 rounded-full bg-amber-500 flex items-center justify-center text-white text-3xl font-bold">AP</div>
+                 {/* FOTO AMEYLIA */}
+                 <div className="w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden">
+                    <img 
+                      src={fotoAmeylia} 
+                      alt="Ameylia Puspita" 
+                      className="w-full h-full object-cover"
+                    />
+                 </div>
               </div>
               <div className="p-6 md:w-2/3">
                 <h3 className="font-bold text-xl text-blue-900">Ameylia Puspita, S.Fil., M.Sc.</h3>
